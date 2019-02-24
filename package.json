@@ -1,0 +1,15 @@
+{
+  "name": "stack-overflow-fanatic",
+  "version": "1.0.0",
+  "description": "Unlock the Stack Overflow fanatic badge without turning on your PC every day.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Valentin Radulescu",
+  "license": "ISC",
+  "dependencies": {
+    "zombie": "^6.1.4"
+  }
+}
