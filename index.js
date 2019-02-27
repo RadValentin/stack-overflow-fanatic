@@ -1,7 +1,8 @@
 const { email, password } = require("./config.json");
 const Browser = require("zombie");
 
-const visitInterval = 23 * 60 * 60 * 1000;
+const VISIT_INTERVAL = 23 * 60 * 60 * 1000;
+const HISTORY = [];
 
 // Stop all JS requests, easier than polyfilling zombie/jsdom
 Browser.runScripts = false;
@@ -16,11 +17,15 @@ function visit() {
     ])
       .then(browser.pressButton("Log in"))
       .then(() => {
-        console.log("OK", browser.location.href);
+        console.info("OK", browser.location.href);
+        HISTORY.push("OK", browser.location.href);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        HISTORY.push("FAIL", err, browser.location.href);
+        console.error("FAIL", err, browser.location.href);
+      });
   });
 }
 
 visit();
-setInterval(visit, visitInterval);
+setInterval(visit, VISIT_INTERVAL);
