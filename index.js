@@ -1,4 +1,3 @@
-const { email, password } = require("./config.json");
 const Browser = require("zombie");
 const express = require("express");
 
@@ -13,8 +12,8 @@ function visit() {
 
   return browser.visit("https://stackoverflow.com/users/login", () => {
     Promise.all([
-      browser.fill("email", email),
-      browser.fill("password", password)
+      browser.fill("email", process.env.email),
+      browser.fill("password", process.env.password)
     ])
       .then(browser.pressButton("Log in"))
       .then(() => {
