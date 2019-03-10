@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "Unlock the Stack Overflow fanatic badge without turning on your PC every day.",
   "main": "index.js",
+  "engines": {
+    "node": "11"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "start http://localhost:3000 && node index.js"
   },
   "author": "Valentin Radulescu",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
     "zombie": "^6.1.4"
