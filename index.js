@@ -1,5 +1,6 @@
 const { email, password } = require("./config.json");
 const Browser = require("zombie");
+const express = require("express");
 
 const VISIT_INTERVAL = 23 * 60 * 60 * 1000;
 const HISTORY = [];
@@ -29,3 +30,14 @@ function visit() {
 
 visit();
 setInterval(visit, VISIT_INTERVAL);
+
+const app = express();
+app.set('port', process.env.PORT || 3000);
+
+app.get('/', (appReq, appRes) => {
+  appRes.json(HISTORY);
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Fanatic running on port', app.get('port'));
+});

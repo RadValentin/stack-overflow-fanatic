@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "start http://localhost:3000 && node index.js"
   },
   "author": "Valentin Radulescu",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.4",
     "zombie": "^6.1.4"
   }
 }
