@@ -31,6 +31,8 @@ visit();
 setInterval(visit, VISIT_INTERVAL);
 
 const app = express();
+app.use(express.static('public'))
+
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', (appReq, appRes) => {
