@@ -9,9 +9,9 @@ Browser.runScripts = false;
 
 function log(status, url, err) {
   if (status === 'FAIL') {
-    console.error("FAIL", err, browser.location.href);
+    console.error("FAIL", err, url);
   } else {
-    console.info("OK", browser.location.href);
+    console.info("OK", url);
   }
   
   HISTORY.push({
