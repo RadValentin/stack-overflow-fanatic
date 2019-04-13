@@ -7,6 +7,21 @@ const HISTORY = [];
 // Stop all JS requests, easier than polyfilling zombie/jsdom
 Browser.runScripts = false;
 
+function log(status, url, err) {
+  if (status === 'FAIL') {
+    console.error("FAIL", err, browser.location.href);
+  } else {
+    console.info("OK", browser.location.href);
+  }
+  
+  HISTORY.push({
+    status,
+    url,
+    err,
+    date: Date.now(),
+  });
+}
+
 function visit() {
   const browser = new Browser();
 
@@ -17,12 +32,10 @@ function visit() {
     ])
       .then(browser.pressButton("Log in"))
       .then(() => {
-        console.info("OK", browser.location.href);
-        HISTORY.push("OK", browser.location.href);
+        log('OK', browser.location.href)
       })
       .catch(err => {
-        HISTORY.push("FAIL", err, browser.location.href);
-        console.error("FAIL", err, browser.location.href);
+        log('FAIL', browser.location.href, err)
       });
   });
 }
