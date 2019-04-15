@@ -1,7 +1,7 @@
 const Browser = require("zombie");
 const express = require("express");
 
-const VISIT_INTERVAL = 23 * 60 * 60 * 1000;
+const VISIT_INTERVAL = 12 * 60 * 60 * 1000;
 const HISTORY = [];
 
 // Stop all JS requests, easier than polyfilling zombie/jsdom
