@@ -13,13 +13,10 @@ function log(status, url, err) {
   } else {
     console.info("OK", url);
   }
-  
-  HISTORY.push({
-    status,
-    url,
-    err,
-    date: Date.now(),
-  });
+
+  const date = (new Date()).toString();
+
+  HISTORY.push({status, url, err, date, timestamp: Date.now()});
 }
 
 function visit() {
