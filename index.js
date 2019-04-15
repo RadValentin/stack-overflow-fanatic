@@ -54,5 +54,5 @@ app.get('/', (appReq, appRes) => {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Fanatic running on port', app.get('port'));
+  console.log('Fanatic running on port', `http://localhost:${app.get('port')}`);
 });
