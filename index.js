@@ -1,6 +1,10 @@
 const Browser = require("zombie");
 const express = require("express");
 
+const STATUS = {
+  FAIL: "FAIL",
+  OK: "OK"
+};
 const VISIT_INTERVAL = 12 * 60 * 60 * 1000;
 const HISTORY = [];
 
@@ -8,10 +12,10 @@ const HISTORY = [];
 Browser.runScripts = false;
 
 function log(status, url, err) {
-  if (status === 'FAIL') {
-    console.error("FAIL", err, url);
+  if (status === STATUS.FAIL) {
+    console.error(STATUS.FAIL, err, url);
   } else {
-    console.info("OK", url);
+    console.info(STATUS.OK, url);
   }
 
   const date = (new Date()).toString();
@@ -29,10 +33,10 @@ function visit() {
     ])
       .then(browser.pressButton("Log in"))
       .then(() => {
-        log('OK', browser.location.href)
+        log(STATUS.OK, browser.location.href)
       })
       .catch(err => {
-        log('FAIL', browser.location.href, err)
+        log(STATUS.FAIL, browser.location.href, err)
       });
   });
 }
