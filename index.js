@@ -1,4 +1,3 @@
-require('newrelic');
 const Browser = require("zombie");
 const express = require("express");
 
