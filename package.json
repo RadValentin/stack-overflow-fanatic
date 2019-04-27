@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
+    "newrelic": "^5.7.0",
     "zombie": "^6.1.4"
   }
 }
