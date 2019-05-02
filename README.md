@@ -1,6 +1,14 @@
 # stack-overflow-fanatic
 
-## Usage
+## What
+
+A very roundabout way of getting the dreaded "Fanatic" badge on StackOverflow (Visit the site each day for 100 consecutive days). 
+
+## Why
+
+Because no matter how hard you try there will always come a day when your 80 day streak gets ruined by bad Wi-Fi.
+
+## How
 
 1. Clone this repo and use it to spin up a [Heroku](https://www.heroku.com/) app.
 1. In the Heroku dashboard, under app settings create two "Config Vars": `email` and `password`. These will be used to login to Stack Overflow.
