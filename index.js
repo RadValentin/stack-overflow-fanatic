@@ -1,3 +1,4 @@
+const axios = require("axios");
 const Browser = require("zombie");
 const express = require("express");
 
@@ -19,8 +20,14 @@ function log(status, url, err) {
   }
 
   const date = new Date().toString();
+  const logData = { status, url, err, date, timestamp: Date.now() };
 
-  HISTORY.push({ status, url, err, date, timestamp: Date.now() });
+  HISTORY.push(logData);
+  axios
+    .post("https://webhook.site/009d31b5-2b3c-4ae8-b061-2e3fcf3276ae", logData)
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 function visit() {
