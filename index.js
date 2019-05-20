@@ -18,9 +18,9 @@ function log(status, url, err) {
     console.info(STATUS.OK, url);
   }
 
-  const date = (new Date()).toString();
+  const date = new Date().toString();
 
-  HISTORY.push({status, url, err, date, timestamp: Date.now()});
+  HISTORY.push({ status, url, err, date, timestamp: Date.now() });
 }
 
 function visit() {
@@ -33,10 +33,10 @@ function visit() {
     ])
       .then(browser.pressButton("Log in"))
       .then(() => {
-        log(STATUS.OK, browser.location.href)
+        log(STATUS.OK, browser.location.href);
       })
       .catch(err => {
-        log(STATUS.FAIL, browser.location.href, err)
+        log(STATUS.FAIL, browser.location.href, err);
       });
   });
 }
@@ -45,14 +45,14 @@ visit();
 setInterval(visit, VISIT_INTERVAL);
 
 const app = express();
-app.use(express.static('public'))
+app.use(express.static("public"));
 
-app.set('port', process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3000);
 
-app.get('/', (appReq, appRes) => {
+app.get("/", (appReq, appRes) => {
   appRes.json(HISTORY);
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Fanatic running on port', `http://localhost:${app.get('port')}`);
+app.listen(app.get("port"), function() {
+  console.log("Fanatic running on port", `http://localhost:${app.get("port")}`);
 });
