@@ -33,19 +33,24 @@ function log(status, url, err) {
 function visit() {
   const browser = new Browser();
 
-  return browser.visit("https://stackoverflow.com/users/login", () => {
-    console.log('Attempting login with:', process.env.email, process.env.password)
-    Promise.all([
-      browser.fill("email", process.env.email),
-      browser.fill("password", process.env.password)
-    ])
-      .then(browser.pressButton("Log in"))
-      .then(() => {
-        log(STATUS.OK, browser.location.href);
-      })
-      .catch(err => {
-        log(STATUS.FAIL, browser.location.href, err);
-      });
+  return browser.visit("https://stackoverflow.com/users/login", async () => {
+    console.log(
+      "Attempting login with:",
+      process.env.email,
+      process.env.password
+    );
+
+    try {
+      browser.fill("email", process.env.email);
+      browser.fill("password", process.env.password);
+
+      await browser.pressButton("#submit-button");
+      await browser.clickLink(".my-profile");
+
+      log(STATUS.OK, browser.location.href);
+    } catch (err) {
+      log(STATUS.FAIL, browser.location.href, err);
+    }
   });
 }
 
