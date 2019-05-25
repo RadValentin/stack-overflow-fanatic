@@ -34,6 +34,7 @@ function visit() {
   const browser = new Browser();
 
   return browser.visit("https://stackoverflow.com/users/login", () => {
+    console.log('Attempting login with:', process.env.email, process.env.password)
     Promise.all([
       browser.fill("email", process.env.email),
       browser.fill("password", process.env.password)
