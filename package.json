@@ -8,12 +8,13 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "start http://localhost:3000 && node index.js"
+    "dev": "start http://localhost:3000 && node -r dotenv/config index.js"
   },
   "author": "Valentin Radulescu",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "zombie": "^6.1.4"
   }
