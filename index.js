@@ -41,9 +41,10 @@ function visit() {
     );
 
     try {
-      browser.fill("email", process.env.email);
-      browser.fill("password", process.env.password);
-
+      await Promise.all([
+        browser.fill("email", process.env.email),
+        browser.fill("password", process.env.password)
+      ]);
       await browser.pressButton("#submit-button");
       await browser.clickLink(".my-profile");
 
