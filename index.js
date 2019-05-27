@@ -48,7 +48,11 @@ function visit() {
       await browser.pressButton("#submit-button");
       await browser.clickLink(".my-profile");
 
-      log(STATUS.OK, browser.location.href);
+      if (browser.location.href.includes(process.env.userid)) {
+        log(STATUS.OK, browser.location.href);
+      } else {
+        log(STATUS.FAIL, browser.location.href, err);  
+      }
     } catch (err) {
       log(STATUS.FAIL, browser.location.href, err);
     }
