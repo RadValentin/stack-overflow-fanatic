@@ -1,5 +1,7 @@
 # stack-overflow-fanatic
 
+![fanatic badge](fanatic.jpg)
+
 - https://stack-overflow-fanatic.herokuapp.com/
 - https://webhook.site/#!/009d31b5-2b3c-4ae8-b061-2e3fcf3276ae
 
