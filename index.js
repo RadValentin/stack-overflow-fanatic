@@ -1,4 +1,3 @@
-const axios = require("axios");
 const Browser = require("zombie");
 const express = require("express");
 
@@ -23,11 +22,6 @@ function log(status, url, err) {
   const logData = { status, url, err, date, timestamp: Date.now() };
 
   HISTORY.push(logData);
-  axios
-    .post("https://webhook.site/009d31b5-2b3c-4ae8-b061-2e3fcf3276ae", logData)
-    .catch(error => {
-      console.error(error);
-    });
 }
 
 function visit() {
@@ -51,7 +45,7 @@ function visit() {
       if (browser.location.href.includes(process.env.userid)) {
         log(STATUS.OK, browser.location.href);
       } else {
-        log(STATUS.FAIL, browser.location.href, err);  
+        log(STATUS.FAIL, browser.location.href, err);
       }
     } catch (err) {
       log(STATUS.FAIL, browser.location.href, err);
