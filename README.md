@@ -1,6 +1,6 @@
 # stack-overflow-fanatic
 
-![fanatic badge](fanatic.png)
+![fanatic badge](assets/fanatic.png)
 
 ## What
 
